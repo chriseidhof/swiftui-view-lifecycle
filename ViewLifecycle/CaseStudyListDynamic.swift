@@ -10,7 +10,7 @@ struct CaseStudyListDynamic: View {
     var body: some View {
         List {
             ForEach(items) { item in
-                LifecycleMonitor(label: item.id)
+                LifecycleMonitor(label: item.id, hasChild: true)
             }
             .onDelete { offsets in
                 items.remove(atOffsets: offsets)

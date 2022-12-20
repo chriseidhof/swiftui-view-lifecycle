@@ -3,6 +3,7 @@ import SwiftUI
 /// A view that records and displays its lifecycle events.
 struct LifecycleMonitor: View {
     var label: String
+    var hasChild: Bool = false
     @State private var stateTimestamp: Date = .now
     @State private var onAppearTimestamp: Date? = nil
     @State private var onDisappearTimestamp: Date? = nil
@@ -37,6 +38,9 @@ struct LifecycleMonitor: View {
                 .help("When onDisappear was last called for this view")
             }
             .font(.callout)
+            if hasChild {
+                LifecycleMonitor(label: "Child")
+            }
         }
         .padding()
         .frame(maxWidth: .infinity)
